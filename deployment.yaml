@@ -57,4 +57,4 @@ spec:
     name: flaskdemo
   minReplicas: 1
   maxReplicas: 5
-  targetCPUUtilizationPercentage: 30
+  targetCPUUtilizationPercentage: 10
