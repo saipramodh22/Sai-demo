@@ -6,7 +6,7 @@ metadata:
     app: flaskdemo
   name: flaskdemo
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: flaskdemo
@@ -20,7 +20,11 @@ spec:
       containers:
       - image: saipramod007/sprtest:7
         name: flaskdemo
-        resources: {}
+        resources: 
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 100m
 status: {}
 ---
 apiVersion: v1
@@ -36,3 +40,21 @@ spec:
    protocol: TCP
    port: 80
    targetPort: 5000
+
+---
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: flaskdemo
+  namespace: default
+spec:
+  scaleTargetRef: 
+    apiVersion: apps/v1
+    kind: Deployment
+    name: flaskdemo
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 30
