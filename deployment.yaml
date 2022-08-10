@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: flaskdemo
+  name: flaskdemo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flaskdemo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: flaskdemo
+    spec:
+      containers:
+      - image: saipramod007/sprtest:5
+        name: flaskdemo
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: flaskdemo
+spec:
+ type: NodePort
+ selector:
+   app: flaskdemo
+ ports:
+ - nodePort: 32410
+   protocol: TCP
+   port: 80
+   targetPort: 5000
