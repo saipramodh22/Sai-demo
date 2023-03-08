@@ -40,8 +40,8 @@ node {
                         sh "cat deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                        //sh "git push https://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@github.com/${GIT_USERNAME}/Sai-demo.git HEAD:main"
-                        sh "git push credentialsId: 'github', url: 'https://github.com/saipramodh22/Sai-demo.git', HEAD: 'main'"
+                        sh "git push https://$GIT_USERNAME:$GIT_PASSWORD@github.com/${GIT_USERNAME}/Sai-demo.git HEAD:main"
+                        
       }
     }
   }
