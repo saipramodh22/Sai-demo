@@ -18,7 +18,7 @@ spec:
         app: flaskdemo
     spec:
       containers:
-      - image: saipramod007/sprtest:79
+      - image: saipramod007/sprtest:80
         name: flaskdemo
         resources: 
           requests:
