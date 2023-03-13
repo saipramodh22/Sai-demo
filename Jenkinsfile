@@ -9,7 +9,7 @@ node {
 
     stage('Build image') {
   
-       //app = docker.build("saipramod007/sprtest")
+       app = docker.build("saipramod007/sprtest")
     }
 
     stage('Test image') {
